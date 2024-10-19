@@ -1,31 +1,29 @@
+// app/page.js
 "use client";
 
-import Navbar from "@/components/Navbar";
 import { useSession, signIn } from "next-auth/react";
-import Image from "next/image"; 
+import Image from "next/image";
+
 
 export default function Home() {
   const { data: session } = useSession();
 
   return (
-    <>
-      {session ? (
-        <Navbar />
-      ) : (
+   <>
+      {!session ? (
         <div
           className="flex flex-col justify-center items-center h-screen bg-cover bg-center p-6 md:p-8 lg:p-10"
           style={{
             backgroundImage: 'url("/bg.avif")',
-            backgroundColor: "rgba(255, 255, 255, 0.6)", 
+            backgroundColor: "rgba(255, 255, 255, 0.6)",
           }}
         >
-         
           <Image
-            src="/logo.png" 
+            src="/logo.png"
             alt="Kisan AI Logo"
-            width={120} 
-            height={120} 
-            className="mb-6" 
+            width={120}
+            height={120}
+            className="mb-6"
           />
           <h1 className="text-5xl font-extrabold mb-4 text-center text-yellow-200 md:text-6xl lg:text-7xl">
             Welcome to Kisan AI
@@ -51,7 +49,7 @@ export default function Home() {
             className="flex items-center bg-yellow-600 text-white px-8 py-4 rounded-lg hover:bg-yellow-700 transition duration-300 mt-4"
           >
             <Image
-              src="/google.png" 
+              src="/google.png"
               alt="Google Logo"
               width={28}
               height={28}
@@ -60,8 +58,7 @@ export default function Home() {
             Sign in with Google
           </button>
         </div>
-      )}
-      {session && (
+      ) : (
         <div className="flex justify-center items-center h-screen">
           <p className="text-2xl font-semibold">Welcome to Kisan AI, {session.user.name}!</p>
         </div>

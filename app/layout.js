@@ -3,7 +3,8 @@
 import { SessionProvider } from "next-auth/react";
 import localFont from "next/font/local";
 import "./globals.css";
-import { metadata } from "./metadata"; // Import metadata from the separate file
+import Layout from "@/components/Layout";
+import { metadata } from "./metadata";
 
 // Font setup
 const geistSans = localFont({
@@ -17,18 +18,15 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
- // This directive makes the component a Client Component
-
+// This directive makes the component a Client Component
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <SessionProvider>{children}</SessionProvider>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <SessionProvider>
+          <Layout>{children}</Layout>
+        </SessionProvider>
       </body>
     </html>
   );
 }
-
-// You can still use `metadata` where needed in your app, just not in this Client Component
