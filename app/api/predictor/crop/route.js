@@ -2,7 +2,7 @@ import { ChatGroq } from '@langchain/groq';
 import { ChatPromptTemplate } from '@langchain/core/prompts';
 
 const llm = new ChatGroq({
-    apiKey: "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",
+    apiKey: process.env.API_KEY,
     model: "llama-3.1-70b-versatile"
 });
 
