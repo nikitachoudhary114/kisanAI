@@ -1,5 +1,5 @@
 
-import CropRecommendationForm from "@/components/cropRecommendationForm";
+import CropRecommendationForm from "@/components/CropRecommendationForm";
 
 export default function recommendation() {
     return (
